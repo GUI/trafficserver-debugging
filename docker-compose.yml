@@ -1,0 +1,37 @@
+version: "3"
+services:
+  ts914:
+    build:
+      context: .
+      dockerfile: Dockerfile-9.1.4
+    ports:
+      - "9914:8080"
+    volumes:
+      - ./remap.config:/etc/trafficserver/remap.config
+  ts920:
+    build:
+      context: .
+      dockerfile: Dockerfile-9.2.0
+    ports:
+      - "9920:8080"
+    volumes:
+      - ./remap.config:/etc/trafficserver/remap.config
+  ts922:
+    build:
+      context: .
+      dockerfile: Dockerfile-9.2.2
+    ports:
+      - "9922:8080"
+    volumes:
+      - ./remap.config:/etc/trafficserver/remap.config
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "8914:8914"
+      - "8920:8920"
+      - "8922:8922"
+      - "8010:8010"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf

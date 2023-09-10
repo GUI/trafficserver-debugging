@@ -1,0 +1,8 @@
+FROM fedora:37
+
+RUN dnf makecache
+RUN dnf -y install "https://kojipkgs.fedoraproject.org//packages/trafficserver/9.2.2/1.fc37/$(arch)/trafficserver-9.2.2-1.fc37.$(arch).rpm"
+
+COPY remap.config /etc/trafficserver/remap.config
+
+CMD ["traffic_server"]
