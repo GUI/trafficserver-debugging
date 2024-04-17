@@ -32,6 +32,14 @@ services:
       - "9923:8080"
     volumes:
       - ./remap.config:/etc/trafficserver/remap.config
+  ts924:
+    build:
+      context: .
+      dockerfile: Dockerfile-9.2.4
+    ports:
+      - "9924:8080"
+    volumes:
+      - ./remap.config:/etc/trafficserver/remap.config
   nginx:
     build:
       context: .
@@ -41,6 +49,7 @@ services:
       - "8920:8920"
       - "8922:8922"
       - "8923:8923"
+      - "8924:8924"
       - "8010:8010"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
